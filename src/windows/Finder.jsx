@@ -12,14 +12,14 @@ import React from 'react'
 const Finder = () => {
   const { openWindow } = useWindowStore();
   const { activeLocation, setActiveLocation } = useLocationStore();
-  
+
   const openItem = (item) => {
     if (item.fileType === "pdf") {
-        return openWindow("resume")
+      return openWindow("resume")
     } else if (item.kind === "folder") {
-        return setActiveLocation(item)
+      return setActiveLocation(item)
     } else if (['fig', 'url'].includes(item.fileType) && item.href) {
-        return window.open(item.href, "_blank")
+      return window.open(item.href, "_blank")
     }
 
     openWindow(`${item.fileType}${item.kind}`, item);
